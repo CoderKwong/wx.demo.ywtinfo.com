@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>南方医务通</title>
+    <link type="text/css" rel="stylesheet" href="css/icoline.min.css">
+    <link type="text/css" rel="stylesheet" href="css/comm.min.css">
+    <link type="text/css" rel="stylesheet" href="css/pages.min.css">
+    <link type="text/css" rel="stylesheet" href="css/popup.min.css">
+    <link type="text/css" rel="stylesheet" href="js/asset/asset.min.css">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache">
+
+</head>
+
+<body>
+
+<header id="header" class="head">
+
+    <div class="wrap">
+
+        <i class="menu_back icon-arrow-left"></i>
+
+        <div class="title">
+
+            <span class="title_d"><p>我的排队候诊</p></span>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <i class="menu_home icon-home"></i>
+
+    </div>
+
+</header>
+
+<article id="container" class="container">
+
+    <section id="content" class="content">
+
+        <div class="selectToggle wrap">
+            <div class="top-nav">
+                <div class="arrow-box"><i class="icon-arrowdown"></i></div>
+                <div class="marginall">
+                    <div id="familySelected" class="text"></div>
+                </div>
+            </div>
+            <ul id="familyList" class="hzApp-list">
+                [%if(this.idCk){%]
+                [%if(this.idCk==this.id){%]
+                <li class="selected">
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radioCheck"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}else{%]
+                <li>
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radio"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}%]
+                [%}else{%]
+                [%if(this.status=='0'){%]
+                <li class="selected">
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radioCheck"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}else{%]
+                <li>
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radio"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}%]
+                [%}%]
+            </ul>
+        </div>
+        
+        
+        <div id="list" class="hzApp-list-timeline"  > 
+           <div class="wrap"> 
+                <div  class="tips left" style="margin: 5px 0 0 0">
+                  <i class="icon-drug">当倒计时为0时</i>，方可<a href="javascript:void(0)" id="wqReload">[重新加载]</a>排队候诊信息
+                </div> 
+            </div> 
+            <div class="wrap">
+                
+                   
+                <ul style="display: none; margin-top: 5px;">
+
+                   
+                    [%if(this.clinicCode!=""){%]
+                    <li> 
+                            <div class="up">
+                                <i class="icon-time"></i>  <h6> [%this.dateTime%]  排队候诊信息</h6>
+                            </div>
+                            <div class="down"> 
+                                <div class="down_lef">  
+                                     <div style="position:relative;width:90px;height:90px;">
+                                        <img src="images/time.jpg" alt="" />     
+                                        <div style="position:absolute;width:90px;height:90px;top:40px;  text-align: center;font-weight: bold;color: #fff;" id="timeOut">180</div>
+                                     </div>
+                                </div>
+                                <div class="down_rig">  
+                                    <h6 style="color: #ff8400">
+                                     <i class="icon-comment"></i>排队号：[%this.waitingNumber%]
+                                    </h6>
+                                    <h6>就诊科室：[%this.admLoc%]</h6>
+                                    <h6>就诊医生：[%this.admDoc%]</h6>  
+                                    <h6>就诊号：[%this.clinicCode%]</h6>
+                                 </div>
+                            </div>
+                            <div class="clear"></div>
+                             
+
+                    </li>
+                      [%}%]
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</article>
+
+<div id="nav_bottom">
+
+</div>
+
+ 
+<div id="dialog" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont dialog">
+
+        <div class="loading_cont">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/asset/zepto.min.js"></script>
+<script type="text/javascript" src="js/asset/dateUtil.min.js"></script>
+<script type="text/javascript" src="js/asset/base.min.js"></script>
+<script type="text/javascript" src="js/waitingQueue.min.js"></script>
+
+</body>
+</html>

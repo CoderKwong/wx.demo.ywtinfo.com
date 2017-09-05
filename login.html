@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>南方医务通</title>
+    <link type="text/css" rel="stylesheet" href="css/icoline.min.css">
+    <link type="text/css" rel="stylesheet" href="css/comm.min.css">
+    <link type="text/css" rel="stylesheet" href="css/pages.min.css">
+    <link type="text/css" rel="stylesheet" href="css/popup.min.css">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache">
+
+</head>
+<body style="background-color: #323436">
+
+<div id="login">
+
+    <section class="account">
+
+        <div class="login_b_t">
+
+            <div class="pd10">
+
+                <div class="fl">还没有账号<a id="reg_now" href="register.html">立即注册</a></div>
+                <div class="fr"><a href="resetPswByPhone.html">忘记密码?</a></div>
+                <div class="clear"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="pd10">
+
+        <form>
+
+            <div class="login_b_i">
+
+                <div class="login_input">
+                    <div class="login_user">
+                        <input type="text" id="loginName" placeholder="手机号码" required="phone">
+                        <i class="icon-mobile"></i>
+                    </div>
+
+                    <div class="login_password">
+                        <input type="password" id="password" placeholder="密码" required="password">
+                        <i class="icon-password"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a class="login_submit btn btn-ok btn-large">登录</a>
+
+        </form>
+
+    </section>
+
+</div>
+
+<div id="loginSuccess" style="display: none">
+
+    <section class="account">
+        <div class="login_b_t">
+            <div class="pd10">
+                <div class="fl">
+                    <span class="user_avatar">
+                        <img src="images/i_user_default.jpg">
+                    </span>
+                    <a href="index.php?user-space-1"></a>
+                </div>
+                <div class="fr">
+                    <a href="index.php?user-space-1">个人中心</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="pd10">
+
+        <a class="logout_submit btn btn-ok btn-large">退出</a>
+
+    </section>
+
+</div>
+
+<div id="dialog" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont dialog">
+
+        <div class="loading_cont">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/asset/zepto.min.js"></script>
+<script type="text/javascript" src="js/asset/base.min.js"></script>
+<script type="text/javascript" src="js/login.min.js"></script>
+
+</body>
+</html>

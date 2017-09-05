@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>南方医务通</title>
+    <link type="text/css" rel="stylesheet" href="css/icoline.min.css">
+    <link type="text/css" rel="stylesheet" href="css/comm.min.css">
+    <link type="text/css" rel="stylesheet" href="css/pages.min.css">
+    <link type="text/css" rel="stylesheet" href="css/popup.min.css">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache">
+
+</head>
+
+<body>
+
+<header id="header" class="head">
+
+    <div class="wrap">
+
+        <i class="menu_back icon-arrowleft"></i>
+
+        <div class="title">
+
+            <span class="title_d"><p>诊疗卡钱包</p></span>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <i class="menu_home icon-home"></i>
+
+    </div>
+
+</header>
+
+<article id="container" class="containerNoBottom">
+
+    <section id="content" class="content">
+
+        <div class="lists">
+            <div class="wrap">
+                <ul style="display: block">
+                    <li class="line1">
+                        <div class="title">持卡人</div>
+                        <div class="word table">
+                            <select id="familyList" style="display: none;">
+                                <option value="[%this.id%]">[%this.trueName%]</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lists">
+            <div class="wrap">
+                <ul style="display: block">
+                    <li class="line1">
+                        <div class="title">办卡医院</div>
+                        <div class="word table">
+                            <select id="hospital" style="display: none">
+                                <option value="[%this.hospitalId%]">[%this.hospitalName%]</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="idNoBlock" class="lists">
+            <div class="wrap">
+                <ul>
+                    <li class="line1">
+                        <div class="title">身份证号码</div>
+                        <div class="word table">
+                            <input id="idNo" type="text" placeholder="请输入二代身份证号码">
+                        </div>
+                    </li>
+                    <li class="line1">
+                        <div class="padl14">
+                            <a id="bindCard" class="btn btn-ok btn-large">绑定诊疗卡</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="list" class="lists">
+
+            <div class="wrap">
+
+                <ul class="card">
+
+                    <li>
+
+                        <a class="alist" data={"cardId":"[%this.cardId%]"}>
+
+                            <span class="selected">卡余额</span>
+
+                            <span class="arrow icon-arrowright"></span>
+
+                            <div class="litpic_90 fl">
+
+                                <div class="card">
+                                    <i class="icon-money"></i><br>
+                                    [%this.money%]元
+                                </div>
+
+                            </div>
+
+                            <div class="info_90">
+
+                                <h4>[%this.hospitalName%]诊疗卡</h4>
+
+                                <h5>持卡人：[%this.trueName%]</h5>
+
+                                <h5>卡　号：[%this.cardId%]</h5>
+
+                            </div>
+
+                            <div class="clear"></div>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+                <ul class="historyList">
+
+                    [% var msg = {A00:"已退费",A01:"已退费",A10:"已支付",A11:"未支付"};
+                    if(this.cancelFlag=="1" || this.payFlag=="0"){
+                    %]
+                    <li>
+
+                        <a class="alist"
+                           data={"customerFamilyId":"[%this.customerFamilyId%]","payCardNum":"[%this.payCardNum%]","hospitalId":"[%this.hospitalId%]","orderId":"[%this.orderId%]","payAmout":"[%this.treatfee/1+this.fee/1%]","payMode":"1","payFlag":"[%this.payFlag%]","returnFlag":"[%this.returnFlag%]"}>
+
+                            <span class="selected">
+                                [%msg["A"+this.returnFlag+this.payFlag]%]
+                            </span>
+
+                            <span class="arrow icon-arrowright"></span>
+
+                            <div class="litpic_90 fl"><img src="[%this.doctorphoto%]">
+
+                            </div>
+
+                            <div class="info_90">
+
+                                <h5>[%this.regDate%] [%this.startTime%]-[%this.endTime%]</h5>
+
+                                <h4>[%this.doctorName%] [%this.title%]</h4>
+
+                                <h5>[%this.deptName%]</h5>
+
+                                <h5>[%this.hospitalName%]</h5>
+
+                            </div>
+
+                            <div class="clear"></div>
+
+                        </a>
+
+                    </li>
+
+                    [%}%]
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</article>
+
+<div id="popup_layer" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont center-datetime">
+        <div class="lists">
+            <ul style="display: block">
+                <li id="payFlag" class="line1">
+                    <div class="info_line1"><i class="icon-money"></i> 支付</div>
+                </li>
+                <li id="cancelFlag" class="line1">
+                    <div class="info_line1"><i class="icon-del"></i> 取消预约</div>
+                </li>
+                <li id="back" class="line1">
+                    <div class="info_line1"><i class="icon-arrowleft"></i> 返回</div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="dialog" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont dialog">
+
+        <div class="loading_cont">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/asset/zepto.min.js"></script>
+<script type="text/javascript" src="js/asset/base.min.js"></script>
+<script type="text/javascript" src="js/cardBind.min.js"></script>
+
+</body>
+</html>
+</html>

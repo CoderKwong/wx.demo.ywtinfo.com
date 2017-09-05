@@ -1,0 +1,250 @@
+<!doctype html>
+<html style="overflow: visible">
+<head>
+    <meta charset="utf-8">
+    <title>南方医务通</title>
+    <link type="text/css" rel="stylesheet" href="css/icoline.min.css">
+    <link type="text/css" rel="stylesheet" href="css/comm.min.css">
+    <link type="text/css" rel="stylesheet" href="css/popup.min.css">
+    <link type="text/css" rel="stylesheet" href="css/pages.min.css">
+    <link type="text/css" rel="stylesheet" href="js/asset/asset.min.css">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache">
+
+</head>
+
+<body style="overflow: visibles">
+
+<header id="header" class="head">
+
+    <div class="wrap">
+
+        <i class="menu_left icon-arrow-left"></i>
+
+        <div class="title">
+
+            <span class="title_d"><p>添加药物</p></span>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <i class="menu_cn">保存</i>
+
+    </div>
+
+</header>
+
+<article id="container" class="containerNoBottom">
+
+    <section id="content" class="content">
+
+        <div class="wrap">
+
+            <form id="add_drug_form">
+
+                <div class="tips"><i class="icon-comment"></i> 填写后,点击右上角的"保存"按钮完成添加</div>
+
+                <ul class="drug_block">
+
+                    <li>
+                        <div class="title">药物名称</div>
+                        <div class="ico"></div>
+                    </li>
+                    <li>
+                        <div class="line">
+                            <input id="drugName" type="text" required class="hasBottomLine" placeholder="请输入药品名称">
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="drug_block">
+
+                    <li>
+                        <div class="title">提醒次数</div>
+                        <div class="ico"></div>
+                    </li>
+
+                    <li class="heightAuto">
+                        <div class="line">
+                            <div class="select_ui">
+                                <div class="select_arrow"></div>
+                                <div class="select_text_ui"></div>
+                                <select class="cs-select" id="frequency">
+                                    <option value="1">一天一次</option>
+                                    <option value="2">一天两次</option>
+                                    <option value="3">一天三次</option>
+                                    <option value="4">一天四次</option>
+                                    <option value="13">每个小时</option>
+                                    <option value="7">每2个小时</option>
+                                    <option value="5">每3个小时</option>
+                                    <option value="4">每4个小时</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="heightAuto">
+                        <ul id="hours-quantity">
+                            <li>
+                                <div class="title2-1">
+                                    <input class="green" readonly="true" value="08:00" type="text"
+                                           name="consumptionHours"></div>
+                                <div class="title2-1 right green">
+                                    服用
+                                    <input class="green" style="width: 5em" readonly="true" value="1.00" type="text"
+                                           name="quantity">
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+                <ul class="drug_block">
+
+                    <li>
+                        <div class="title">剂量单位</div>
+                        <div class="ico"></div>
+                    </li>
+
+                    <li class="heightAuto">
+                        <div class="line">
+                            <div class="select_ui">
+                                <div class="select_arrow"></div>
+                                <div class="select_text_ui"></div>
+                                <select class="cs-select" id="doseType">
+                                    <option value="片">片</option>
+                                    <option value="粒">粒</option>
+                                    <option value="贴">贴</option>
+                                    <option value="毫升">毫升</option>
+                                    <option value="毫克">毫克</option>
+                                    <option value="滴">滴</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="drug_block">
+
+                    <li>
+                        <div class="title">安排</div>
+                        <div class="ico"></div>
+                    </li>
+                    <li class="hasBottomLine">
+                        <div class="title2">开始日期</div>
+                        <div class="word">
+                            <input class="green" readonly id="start_date" type="text">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="line">持续时间</div>
+                    </li>
+                    <li class="hasBottomLine">
+                        <div class="title2-1">
+                            <input type="radio" checked name="days" value="0">持续
+                        </div>
+                        <div class="title2-1">
+                            <input type="radio" name="days" value="1">
+                            天数<input id="days_value" style="width:4em;padding-left:1em; display: none" type="text"
+                                     class="green" readonly="true" size="4" value="3">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="line">间隔</div>
+                    </li>
+                    <li>
+                        <div class="line">
+                            <div class="title2-1">
+                                <input type="radio" checked name="everyXDays" value="0">每天
+                            </div>
+                            <div class="title2-1">
+                                <input type="radio" name="everyXDays" value="1">间隔:
+                                <input id="everyXDays" style="width:1em;display: none" type="text" class="green"
+                                       readonly="true" size="4" value="2">天
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="drug_block">
+
+                    <li>
+                        <div class="title">服药原因</div>
+                        <div class="ico"></div>
+                    </li>
+                    <li>
+                        <div class="line"><input id="diagnose" required type="text" class="hasBottomLine" placeholder="如头晕、感冒...">
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="drug_block">
+
+                    <li>
+                        <div class="title">药品来源</div>
+                        <div class="ico"></div>
+                    </li>
+                    <li>
+                        <div class="line"><input id="source" type="text" required class="hasBottomLine" placeholder="如某某药店、某某医院...">
+                        </div>
+                    </li>
+
+                </ul>
+
+                <div class="reSize"></div>
+
+            </form>
+
+            <div class="clear"></div>
+
+        </div>
+
+    </section>
+
+</article>
+
+<div id="popup_layer" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont center-datetime">
+
+    </div>
+
+</div>
+
+<div id="dialog" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont dialog">
+
+        <div class="loading_cont">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="js/asset/zepto.min.js"></script>
+<script type="text/javascript" src="js/asset/base.min.js"></script>
+<script type="text/javascript" src="js/asset/dateUtil.min.js"></script>
+<script type="text/javascript" src="js/asset/iscroll-probe.min.js"></script>
+<script type="text/javascript" src="js/asset/select-ui.min.js"></script>
+<script type="text/javascript" src="js/drug_q_plan.min.js"></script>
+<script type="text/javascript" src="js/drug_q_plan_add.min.js"></script>
+</body>
+
+</html>

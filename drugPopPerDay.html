@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>南方医务通</title>
+    <link type="text/css" rel="stylesheet" href="css/icoline.min.css">
+    <link type="text/css" rel="stylesheet" href="css/comm.min.css">
+    <link type="text/css" rel="stylesheet" href="css/pages.min.css">
+    <link type="text/css" rel="stylesheet" href="css/popup.min.css">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache">
+
+</head>
+
+<body>
+
+
+<article id="container" class="containerAll">
+
+    <section id="content" class="content">
+
+        <div class="wrap">
+
+            <div class="tips"><i class="icon-comment"></i> 点击以下的［待服］或［漏服］按钮进行服用确认</div>
+            <div class="itable" style="margin-top: 5px">
+                <div class="head">
+                    <ul>
+                        <li class="w20">时间</li>
+                        <li class="w60">药物名称</li>
+                        <li class="w20">状态</li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <table>
+                        <tbody style="display: none">
+                        <tr>
+                            <td class="w20">
+                                [%if(this.date==null){%]
+                                <span class="button rearrange" name="rearrange" data="[%this.id%]">
+                                <i class="icon-setting"></i>
+                                    [%this.consumptionHours%]
+                                </span>
+                                [%}else{%]
+                                [%this.consumptionHours%]
+                                [%}%]
+                            </td>
+                            <td class="w60">[%this.drugName%]:[%this.quantity%][%this.doseType%]</td>
+                            <td class="w20">
+                                [%if(this.date==null || this.status=="taken"){%]
+                                <span class="button">
+                                [%this.statusCn%]
+                                </span>
+                                [%}else{%]
+                                [%if(new Date().toDate(this.date)>new Date()){%]
+                                <span class="button [%this.status%]" name="[%this.status%]" id="[%this.id%]">
+                                    [%this.statusCn%]
+                                </span>
+                                [%}else{%]
+                                <span class="button missing" name="missing" id="[%this.id%]">
+                                    漏服
+                                </span>
+                                [%}%]
+                                [%}%]
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</article>
+
+<div id="dialog" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont dialog">
+
+        <div class="loading_cont">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/asset/zepto.min.js"></script>
+<script type="text/javascript" src="js/asset/base.min.js"></script>
+<script type="text/javascript" src="js/asset/dateUtil.min.js"></script>
+<script type="text/javascript" src="js/drugPopPerDay.min.js"></script>
+
+</body>
+</html>

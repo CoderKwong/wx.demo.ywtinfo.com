@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>南方医务通</title>
+    <link type="text/css" rel="stylesheet" href="css/icoline.min.css">
+    <link type="text/css" rel="stylesheet" href="css/comm.min.css">
+    <link type="text/css" rel="stylesheet" href="css/pages.min.css">
+    <link type="text/css" rel="stylesheet" href="css/popup.min.css">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache">
+
+</head>
+
+<body>
+
+<header id="header" class="head">
+
+    <div class="wrap">
+
+        <i class="menu_back icon-arrowleft"></i>
+
+        <div class="title">
+
+            <span class="title_d"><p>医院介绍</p></span>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <i class="menu_todo icon-arrowright"></i>
+
+    </div>
+
+</header>
+
+<div id="todo">
+
+    <div class="todo_msk"></div>
+
+    <div class="todo">
+
+        <table width="100%" cellspacing="10" border="0">
+
+            <tbody>
+            <tr>
+
+                <td>
+                    <a href="deptList.html">
+                        <i class="icon-bar"></i>
+                        <label>科室</label>
+                    </a>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    <a href="doctorlist.html">
+                        <i class="icon-user0"></i>
+                        <label>医生</label>
+                    </a>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<article id="container" class="containerNoBottom">
+
+    <section id="content" class="content">
+
+        <div id="list" class="lists">
+
+            <div class="wrap">
+
+                <ul>
+
+                    <li>
+
+
+                        <a class="alist" href="deptList.html?hospitalId=[%this.hospitalId%]">
+
+                            <span class="arrow icon-arrowright"></span>
+
+                            <div class="litpic_90 fl"><img src="[%this.hospitalPhoto%]"></div>
+
+                            <div class="info_90">
+
+                                <h4>[%this.hospitalName%]</h4>
+
+                                <h5>[%this.hospitalLevel%]</h5>
+
+                                <div class="info_i">
+
+                                    <dl class="info_views">
+
+                                        <dt class="icon-view"></dt>
+
+                                        <dd>关注([%this.favoriteNum%])</dd>
+
+                                        <div class="clear"></div>
+
+                                    </dl>
+
+
+                                    <dl class="info_like">
+
+                                        <dt class="icon-love"></dt>
+
+                                        <dd>好评([%this.commentNum%])</dd>
+
+                                        <div class="clear"></div>
+
+                                    </dl>
+
+                                    <div class="clear"></div>
+
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="clear"></div>
+
+                        </a>
+
+
+                    </li>
+
+                </ul>
+
+                <div style="height:1px"></div>
+
+                <div id="works">
+
+                    <div class="pd5">
+
+                        <div class="article_ct">
+
+                            <p>
+                                [%this.info%]
+                            </p>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</article>
+
+<div id="dialog" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont dialog">
+
+        <div class="loading_cont">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/asset/zepto.min.js"></script>
+<script type="text/javascript" src="js/asset/base.min.js"></script>
+<script type="text/javascript" src="js/hospitalWho.min.js"></script>
+
+</body>
+</html>

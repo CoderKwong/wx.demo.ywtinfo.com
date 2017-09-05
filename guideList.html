@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/icoline.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/comm.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/pages.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/popup.min.css" />
+    <link type="text/css" rel="stylesheet" href="js/asset/asset.min.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+</head>
+
+<body>
+
+<header id="header" class="head">
+
+    <div class="wrap">
+
+        <i class="menu_back icon-arrow-left"></i>
+
+        <div class="title">
+
+            <span class="title_d"><p>我的导诊指引</p></span>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <i class="menu_home icon-home"></i>
+
+    </div>
+
+</header>
+
+<article id="container" class="containerNoBottom">
+
+    <section id="content" class="content">
+
+    
+        <div class="selectToggle wrap">
+            <div class="top-nav">
+                <div class="arrow-box"><i class="icon-arrowdown"></i></div>
+                <div class="marginall">
+                    <div id="familySelected" class="text"></div>
+                </div>
+            </div>
+            <ul id="familyList" class="hzApp-list">
+                [%if(this.idCk){%]
+                [%if(this.idCk==this.id){%]
+                <li class="selected">
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radioCheck"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}else{%]
+                <li>
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radio"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}%]
+                [%}else{%]
+                [%if(this.status=='0'){%]
+                <li class="selected">
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radioCheck"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}else{%]
+                <li>
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radio"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}%]
+                [%}%]
+            </ul>
+        </div>
+         
+
+
+        
+
+        <div id="list" class="hzApp-list-timeline"> 
+            
+
+          
+
+        </div>
+            
+
+        <script id="jslist" type="text/html"> 
+         
+            
+            {each list as value i}  
+              <div class="wrap"> 
+                <div  class="tips left" style="margin: 5px 0 0 0">
+                  <i class="icon-drug">就诊当天的第{i + 1}次开单记录</i>
+                </div> 
+              </div>  
+                   
+               <div class="wrap"> 
+                <ul style="margin-top: 5px;"> 
+                 
+                   <li>  
+                            <div class="up" id="bcTarget" style="margin: 5px auto;" data="{value.invoice.head.patientID}"> </div> 
+                            <div class="down" style="margin-bottom: 10px;border-left: 0px;">   
+                                    <h6 style="margin-left: 20px; ">病人ID：{value.invoice.head.patientID} 姓名：{value.invoice.head.patientName}</h6>
+                                    <h6 style="margin-left: 20px;">就诊医生：{value.invoice.head.doctorName}</h6> 
+                                    <h6 style="margin-left: 20px;">诊断：{value.invoice.head.diagnose}</h6> 
+                                 </div> 
+                            <div class="clear"></div> 
+                    </li>  
+                     
+                   {if value.invoice.body.laboratory.hasOwnProperty("specimenList")} 
+                    
+                    {a = value.invoice.body.laboratory.specimenList.specimen}
+                    {if a.length==0}
+                    {else} 
+                      {a= [a]}  
+                    {/if}                
+
+                    {each a as v l} 
+                      
+                         <li> 
+                           {if l==0}
+                            <div class="up">
+                                <i class="icon-comment"></i><h6 style=" color: #423B3B;border-bottom: #514A4A 1px solid; margin-top: 10px;margin-bottom: 10px;">检验</h6>
+                            </div>
+                            {/if}
+                            <div class="down" style="margin-bottom: 10px;border-left: 0px;">   
+                                    <h6 style="margin-left: 20px; ">{l+1}、{v.specimenDesc}</h6>
+                                    <h6 style="margin-left: 40px;">{v.guide}</h6> 
+                                    <h6 style="margin-left: 40px;">{v.prompt}</h6> 
+                                 </div> 
+                            <div class="clear"></div> 
+                        </li>  
+                      {/each}  
+                   {/if}
+
+                   {if value.invoice.body.examination.hasOwnProperty("examList")} 
+                  
+                    
+                    {a = value.invoice.body.examination.examList.examItem}
+                    {if a.length>0} 
+                    {else}
+                      {a= [a]}  
+                    {/if}     
+                    
+                    {each a as v l} 
+
+                    <li> 
+                            {if l==0}
+                            <div class="up">
+                                <i class="icon-comment"></i><h6 style=" color: #423B3B;border-bottom: #514A4A 1px solid; margin-top: 10px;margin-bottom: 10px;">检查</h6>
+                            </div>
+                            {/if}
+
+                            <div class="down" style="margin-bottom:20px;border-left: 0px;">   
+                                    <h6 style="margin-left: 20px; ">{l+1}、{v.itemName}</h6>
+                                    <h6 style="margin-left: 40px;">开单日期：{v.date}</h6>
+                                    <h6 style="margin-left: 40px;">开单科室：{v.ordDept}</h6>
+                                    <h6 style="margin-left: 40px;">{v.guide}</h6>
+                                    <h6 style="margin-left: 40px;">检查地点：{v.depLocPosition}</h6>
+                                    <h6 style="margin-left: 40px;">{v.bookedNote}</h6> 
+                                 </div> 
+                            <div class="clear"></div> 
+                    </li>  
+                  {/each}  
+                  {/if}
+
+                  
+                   {if value.invoice.body.treatment.hasOwnProperty("treatDeptList")}  
+                    
+
+                    {a = value.invoice.body.treatment.treatDeptList.treatDept}
+                    {if a.length==0} 
+                     {else}
+                        {a= [a]}  
+                    {/if}     
+                    
+                    {each a as v l} 
+
+                    <li> 
+                           {if l==0}
+                            <div class="up">
+                                <i class="icon-comment"></i><h6 style=" color: #423B3B;border-bottom: #514A4A 1px solid; margin-top: 10px;margin-bottom: 10px;">治疗</h6>
+                            </div>
+                            {/if}
+                            <div class="down" style="margin-bottom:20px;border-left: 0px;">   
+                                    <h6 style="margin-left: 20px; ">{l+1}、{v.deptName}</h6> 
+                                    <h6 style="margin-left: 40px; ">{v.guide}</h6> 
+                                 </div> 
+                            <div class="clear"></div> 
+                    </li>  
+                  {/each}  
+                  {/if}
+                  
+                   {if value.invoice.body.drug.baseDrug.hasOwnProperty("baseDrugDeptList")}   
+                    {a = value.invoice.body.drug.baseDrug.baseDrugDeptList.baseDrugDept}
+                    {if a.length==0} 
+                    {else}
+                     {a= [a]}  
+                    {/if}     
+                    
+                    {each a as v l}   
+                    <li> 
+                           {if l==0}
+                            <div class="up">
+                                <i class="icon-comment"></i><h6 style=" color: #423B3B;border-bottom: #514A4A 1px solid; margin-top: 10px;margin-bottom: 10px;">药品</h6>
+                            </div>
+                            {/if}
+                            <div class="down" style="margin-bottom:20px;border-left: 0px;">   
+                                    <h6 style="margin-left: 20px; ">{l+1}、{v.deptName}</h6> 
+                                    <h6 style="margin-left: 40px; ">{v.guide}</h6> 
+                                 </div> 
+                            <div class="clear"></div> 
+                    </li>  
+                  {/each}
+                   {/if}
+                  
+                   {if value.invoice.body.drug.hasOwnProperty("druglist")}  
+                     
+                    {a = value.invoice.body.drug.druglist.drugItem}
+                    {if a.length==0} 
+                     {else}
+                      {a= [a]}  
+                    {/if}     
+                    
+                    {each a as v l} 
+                    <li> 
+                         {if l==0}
+                            <div class="up">
+                                <i class="icon-comment"></i><h6 style=" color: #423B3B;border-bottom: #514A4A 1px solid; margin-top: 10px;margin-bottom: 10px;">取药</h6>
+                            </div>
+                            {/if}
+                            <div class="down" style="margin-bottom:20px;border-left: 0px;">   
+                                    <h6 style="margin-left: 20px; ">{l+1}、{v.drugType}</h6> 
+                                    <h6 style="margin-left: 40px; ">{v.guide}</h6> 
+                                    <h6 style="margin-left: 40px; ">药发药窗口:{v.window}</h6> 
+                                    <h6 style="margin-left: 40px; ">{v.prompt}</h6> 
+                                 </div> 
+                            <div class="clear"></div> 
+                    </li>  
+                  {/each}  
+                {/if}
+                  
+
+                </ul> 
+              </div>
+ 
+            {/each}   
+
+         </script>  
+    </section>
+
+</article>
+
+<div id="dialog" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont dialog">
+
+        <div class="loading_cont">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/asset/zepto.min.js"></script>
+<script type="text/javascript" src="js/asset/base.min.js"></script> 
+<script type="text/javascript" src="js/asset/jquery.js"></script> 
+<script type="text/javascript" src="js/asset/template.js"></script>   
+<script type="text/javascript" src="js/asset/jquery-barcode.js"></script> 
+<script type="text/javascript" src="js/guideList.min.js"></script>
+
+</body>
+</html>

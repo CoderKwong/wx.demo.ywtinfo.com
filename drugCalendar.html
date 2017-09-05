@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>南方医务通</title>
+    <link type="text/css" rel="stylesheet" href="css/icoline.min.css">
+    <link type="text/css" rel="stylesheet" href="css/icoWeather.min.css">
+    <link type="text/css" rel="stylesheet" href="css/comm.min.css">
+    <link type="text/css" rel="stylesheet" href="css/pages.min.css">
+    <link type="text/css" rel="stylesheet" href="css/popup.min.css">
+    <link type="text/css" rel="stylesheet" href="js/asset/asset.min.css">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache">
+
+</head>
+
+<body>
+
+<header id="header" class="head">
+
+    <div class="wrap">
+
+        <i class="menu_back icon-arrow-left"></i>
+
+        <div class="title">
+
+            <span class="title_d"><p>我的用药日程</p></span>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <i class="right menu_drug_add icon-addRound"></i>
+
+    </div>
+
+</header>
+
+<article id="container" class="container" style="background-color: #FFFFFF">
+
+    <section id="content" class="content">
+
+        <div class="selectToggle">
+            <div class="top-nav">
+                <div class="arrow-box"><i class="icon-arrowdown"></i></div>
+                <div class="marginall">
+                    <div id="familySelected" class="text"></div>
+                </div>
+            </div>
+            <ul id="familyList" class="hzApp-list">
+                [%if(this.idCk){%]
+                [%if(this.idCk==this.id){%]
+                <li class="selected">
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radioCheck"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}else{%]
+                <li>
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radio"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}%]
+                [%}else{%]
+                [%if(this.status=='0'){%]
+                <li class="selected">
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radioCheck"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}else{%]
+                <li>
+                    <a data={"id":"[%this.id%]","trueName":"[%this.trueName%]","status":"[%this.status%]"}>
+                        <i class="icon-radio"> [%this.trueName%] - [%this.ownership%]</i>
+                    </a>
+                </li>
+                [%}%]
+                [%}%]
+            </ul>
+        </div>
+
+        <div id="DateBox" class="show">
+
+            <div class="hzApp-list-calendar-master">
+
+                <div class="right arrowT month"><span>&gt;&gt;</span></div>
+
+                <div class="right arrowT day"><span>&gt;</span></div>
+
+                <div class="left arrowT month"><span>&lt;&lt;</span></div>
+
+                <div class="left arrowT day"><span>&lt;</span></div>
+
+                <h2 class="title"></h2>
+
+            </div>
+
+            <div class="wrap">
+
+                <div id="ListCycle">
+
+                    <div class="title left topDown" id="nightTitle">
+                        <span><i class="icon-w-night"></i>凌晨</span>
+                    </div>
+                    <div class="title right topDown" id="morningTitle">
+                        <span>上午<i class="icon-w-moring"></i></span>
+                    </div>
+                    <ul>
+                        <li id="night" class="up">
+
+                        </li>
+
+                        <li id="morning" class="up">
+
+                        </li>
+
+                        <li id="evening" class="down">
+
+                        </li>
+
+                        <li id="afternoon" class="down">
+
+                        </li>
+                    </ul>
+                    <div class="title left topup" id="eveningTitle">
+                        <span><i class="icon-w-evening"></i>晚上</span>
+                    </div>
+                    <div class="title right topup" id="afternoonTitle">
+                        <span>下午<i class="icon-w-afternoon"></i></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div style="height:1px"></div>
+
+
+    </section>
+
+</article>
+
+
+<div id="nav_bottom">
+
+</div>
+
+<div class="hzApp-over-layer">
+
+    <div class="asort">
+
+        <div class="hd">
+
+            <div class="wrap">
+
+                <div class="fl">
+
+                    <span></span>
+
+                    <div class="clear"></div>
+
+                </div>
+
+                <div class="fr"><i class="icon-del"></i></div>
+
+                <div class="clear"></div>
+
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <div id="newwrap_t" class="inNewWrap">
+
+                <iframe id="newwrap" frameborder="0" width="100%" height="100%"></iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<div id="dialog" class="popup_layer">
+
+    <div class="popup_msk"></div>
+
+    <div class="popup_layer_cont dialog">
+
+        <div class="loading_cont">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/asset/zepto.min.js"></script>
+<script type="text/javascript" src="js/asset/dateUtil.min.js"></script>
+<script type="text/javascript" src="js/asset/base.min.js"></script>
+<script type="text/javascript" src="js/drugCalendar.min.js"></script>
+
+</body>
+
+</html>
